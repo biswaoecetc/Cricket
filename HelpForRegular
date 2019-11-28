@@ -1,0 +1,46 @@
+Running SQL - brew services restart mysql
+brew services stop mysql
+root password "Welcome@Biswa03"
+To start sql server --- mysqladmin -uroot -p proc
+
+To start SQL through docker
+docker rm aws-eb-mysql
+docker run --name aws-eb-mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql:8.0.11
+
+ docker rm --force aws-eb-mysql --if existing instance is there
+ docker exec -it aws-eb-mysql bash
+ mysql -uroot -proot
+aavig1gb6a9ho7.c3amaazxj8la.us-east-2.rds.amazonaws.com:3306
+
+http://AwsEosTradeSpringBoot-env.enmmhta3mr.us-east-2.elasticbeanstalk.com
+
+
+https://start.spring.io/
+
+https://editor.swagger.io/
+
+CREATE  TABLE IF NOT EXISTS CricketDB.CRICKET_TEAM (
+  team_id VARCHAR(20) NOT NULL,
+  team_name VARCHAR(150) NOT NULL ,
+  score VARCHAR(6) ,
+  date_of_match DATE ,
+  PRIMARY KEY (team_id) );
+
+INSERT INTO CRICKET_TEAM VALUES('123', 'ABC', '230', '2019-04-31');
+
+ALTER TABLE CRICKET_TEAM
+ADD team_id_played VARCHAR(20);
+
+-- CREATE  TABLE IF NOT EXISTS CricketDB.CRICKET_TEAM (
+--   team_id VARCHAR(20) NOT NULL,
+--   team_name VARCHAR(150) NOT NULL ,
+--   score VARCHAR(6) ,
+--   date_of_match DATE ,
+--   PRIMARY KEY (team_id) );
+
+select * from CricketDB.CRICKET_TEAM;
+
+-- INSERT INTO CRICKETDB.CRICKET_TEAM VALUES('126', 'BCD', '250', '2019-11-05', '124');
+ -- update cricket_team set team_id_played = '126' where team_id = '124';
+-- ALTER TABLE CRICKET_TEAM
+-- ADD team_id_played VARCHAR(20);
