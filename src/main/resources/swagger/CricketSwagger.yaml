@@ -1,0 +1,86 @@
+swagger: "2.0"
+info:
+  description: "This application evaluates two cricket team scores and generates the winning team using match unique id"
+  version: "1.0.0"
+  title: "Swagger for Cricket Tournament"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "cricket-aws.com"
+basePath: "/v1"
+tags:
+  - name: "Cricket"
+    description: "Cricket Team"
+    externalDocs:
+      description: "Find out more"
+      url: "http://swagger.io"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /cricket/{teamId}:
+    get:
+      tags:
+        - "team"
+      summary: "Get Team details"
+      description: ""
+      operationId: "getTeamDetails"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "teamId"
+          in: "path"
+          description: "Team ID"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/TeamDetails"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Pet not found"
+        405:
+          description: "Validation exception"
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  TeamDetails:
+    type: "object"
+    properties:
+      teamId:
+        type: "string"
+      teamName:
+        type: "string"
+      score:
+        type: "integer"
+        format: "int32"
+      dateOfMatch:
+        type: "string"
+        format: "date-time"
+      playedAgainstTeam:
+        type: "object"
+        description: "Team against which it played"
+        properties:
+          teamId:
+            type: "string"
+          teamName:
+            type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
